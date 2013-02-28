@@ -97,13 +97,16 @@ NSString+Ruby.m
 Tests
 ---------------------
 Tests are provided through Kiwi ( https://github.com/allending/Kiwi ), and are largely reproduced from the Ruby String
-Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html#method-i-split ), some methods may be changed slightly
+Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html ), some methods may be changed slightly
 in how they function, but for the most part the goal is to ape Ruby behaviour.
 
 Method List
 ---------------------
 Here is a full equivalence list of methods provided (Notes are provided in brackets for when things are purposefully
-not implemented, blank lines will be implemented in future versions)
+not implemented, blank lines will be implemented in future versions).
+
+Please consult the Ruby String Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html ) for method behaviour
+documentation.
 
 ```
  ::try_convert
