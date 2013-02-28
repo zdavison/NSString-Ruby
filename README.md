@@ -99,7 +99,7 @@ Method List
 Here is a full equivalence list of methods provided (Notes are provided in brackets for when things are purposefully
 not implemented, blank lines will be implemented in future versions)
 
-```ruby
+```
  ::try_convert
  #%               (no sensible way to implement this)
  #*             x:
