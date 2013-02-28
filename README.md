@@ -20,11 +20,11 @@ Operator overloading has been mimicked to the best of our ability, using clever 
 the equivalent of the concatenation operator (+), would be (:) in NSString+Ruby, as follows:
 
 ```ruby
-"hello" + "world"
+"hello " + "world"      #=>"hello world"
 ```
 
 ```objective-c
-[@"hello ":@"world"];
+[@"hello ":@"world"];   //"hello world"
 ```
 
 This is still a little ugly, but is the least amount of code you'd need to write in obj-c to do concatenation now.
