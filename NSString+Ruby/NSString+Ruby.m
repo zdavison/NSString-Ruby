@@ -301,7 +301,7 @@
   return NSNotFound;
 }
 
-- (NSString*)insert:(long)index string:(NSString*)string{
+- (NSString*)insert:(int)index string:(NSString*)string{
   if(index < 0)
     index = self.length - abs(index) + 1;
   else if(index >= self.length)
