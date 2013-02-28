@@ -10,7 +10,9 @@ unimplimented (as of yet), and mutating methods (Mutation of strings is not the 
 Differences / Important notes
 ---------------------
 Changes have been made to method names, mostly to line up with traditional objective-c naming conventions, the rule
-generally being that all shorthand words have been extended to their full equivalent (eg: rStrip is rightStrip)
+generally being that all shorthand words have been extended to their full equivalent (eg: rStrip is rightStrip).
+
+Original methods provided by objective-c are not aliased to Ruby equivalents.
 
 Blocks are available for some methods, and not others, mostly for language paradigm reasons.
 
