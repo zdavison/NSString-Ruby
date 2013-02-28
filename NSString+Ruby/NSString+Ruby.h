@@ -35,7 +35,7 @@
 -(BOOL)includes:(NSString*)include;
 -(NSInteger)index:(NSString*)pattern;
 -(NSInteger)index:(NSString*)pattern offset:(int)offset;
--(NSString*)insert:(int)index string:(NSString*)string;
+-(NSString*)insert:(long)index string:(NSString*)string;
 -(NSString*)inspect;
 -(BOOL)isASCII;
 -(BOOL)isEmpty;
