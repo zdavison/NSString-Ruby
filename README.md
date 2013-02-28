@@ -10,7 +10,9 @@ unimplimented (as of yet), and mutating methods (Mutation of strings is not the 
 Differences / Important notes
 ---------------------
 Changes have been made to method names, mostly to line up with traditional objective-c naming conventions, the rule
-generally being that all shorthand words have been extended to their full equivalent (eg: rStrip is rightStrip)
+generally being that all shorthand words have been extended to their full equivalent (eg: rStrip is rightStrip).
+
+Original methods provided by objective-c are not aliased to Ruby equivalents.
 
 Blocks are available for some methods, and not others, mostly for language paradigm reasons.
 
@@ -18,11 +20,11 @@ Operator overloading has been mimicked to the best of our ability, using clever 
 the equivalent of the concatenation operator (+), would be (:) in NSString+Ruby, as follows:
 
 ```ruby
-"hello" + "world"
+"hello " + "world"      #=>"hello world"
 ```
 
 ```objective-c
-[@"hello ":@"world"];
+[@"hello ":@"world"];   //"hello world"
 ```
 
 This is still a little ugly, but is the least amount of code you'd need to write in obj-c to do concatenation now.
@@ -95,13 +97,16 @@ NSString+Ruby.m
 Tests
 ---------------------
 Tests are provided through Kiwi ( https://github.com/allending/Kiwi ), and are largely reproduced from the Ruby String
-Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html#method-i-split ), some methods may be changed slightly
+Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html ), some methods may be changed slightly
 in how they function, but for the most part the goal is to ape Ruby behaviour.
 
 Method List
 ---------------------
 Here is a full equivalence list of methods provided (Notes are provided in brackets for when things are purposefully
-not implemented, blank lines will be implemented in future versions)
+not implemented, blank lines will be implemented in future versions).
+
+Please consult the Ruby String Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html ) for method behaviour
+documentation.
 
 ```
  ::try_convert
