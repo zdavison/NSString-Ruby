@@ -79,6 +79,10 @@ a["lo"]                 // lo
 a["bye"]                // nil
 ```
 
+iOS Requirements / ARC Status
+---------------------
+NSString+Ruby requires iOS 5.0+, and is ARC enabled.
+
 Installation
 ---------------------
 Clone the repository, and add the following files to your project:
