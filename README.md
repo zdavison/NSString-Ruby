@@ -61,15 +61,15 @@ a[2,3];                 // "llo"
 a[-3, 2]                // "er"
 ```
 
-Ranges are provided through C-string shorthand, allowing you to write the following:
+Ranges are provided through C-string shorthand and nameless methods, allowing you to write the following:
 
 ```objective-c
 NSString *a = @"hello there";
-a[2:"..":3];            // "ll"
-a[7:"..":-2];           // "her"
-a[-4:"..":-2]           // "her"
-a[-2:"..":-4]           // nil
-a[12:"..":-1]           // nil
+[a:2:"..":3];            // "ll"
+[a:7:"..":-2];           // "her"
+[a:-4:"..":-2]           // "her"
+[a:-2:"..":-4]           // nil
+[a:12:"..":-1]           // nil
 ```
 
 Regex matching also works, and is provided as the primary means of matching, almost anything that takes a string
