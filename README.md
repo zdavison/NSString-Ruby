@@ -36,9 +36,10 @@ Array/index style accessors are provided through:
 -(id)objectForKeyedSubscript:(id)key;
 ```
 
-...and provide for the majority of Ruby style functionality, the following, for example, all work:
+...and provide for the majority of Ruby style functionality, the following Ruby methods, for example, are all implemented:
 
 ```ruby
+(Ruby)
  a = "hello there"
  a[1]                   #=> "e"
  a[2, 3]                #=> "llo"
