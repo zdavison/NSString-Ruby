@@ -138,12 +138,12 @@
 }
 
 #pragma mark - Public Shorthand Accessors
-- (NSString*):(int)loc:(int)len {
+- (NSString*):(int)loc :(int)len {
   return [self substringWithRange:NSMakeRange((loc > 0) ? loc:self.length - abs(loc),
                                               len)];
 }
 
-- (NSString*):(int)start:(char*)shorthand:(int)end {
+- (NSString*):(int)start :(char*)shorthand :(int)end {
   int rstart = (start > 0) ? start : self.length - abs(start);
   int rend = (end > 0) ? end : self.length - abs(end);
   if(rstart > rend)

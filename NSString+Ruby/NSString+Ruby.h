@@ -14,8 +14,8 @@
 -(NSString*)x:(int)mult;
 
 //Shorthand Accessors
--(NSString*):(int)loc:(int)len;
--(NSString*):(int)start:(char*)shorthand:(int)end;
+-(NSString*):(int)loc :(int)len;
+-(NSString*):(int)start :(char*)shorthand :(int)end;
 
 //Ruby Methods
 -(void)bytes:(void(^)(unichar))block;
