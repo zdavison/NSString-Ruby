@@ -36,9 +36,10 @@ Array/index style accessors are provided through:
 -(id)objectForKeyedSubscript:(id)key;
 ```
 
-...and provide for the majority of Ruby style functionality, the following, for example, all work:
+...and provide for the majority of Ruby style functionality, the following Ruby methods, for example, are all implemented:
 
 ```ruby
+(Ruby)
  a = "hello there"
  a[1]                   #=> "e"
  a[2, 3]                #=> "llo"
@@ -57,18 +58,18 @@ Array/index style accessors are provided through:
 NSString *a = @"hello there";
 a[1];                   // "e"
 a[2,3];                 // "llo"
-a[-3, 2]               #=> "er"
+a[-3, 2]                // "er"
 ```
 
-Ranges are provided through C-string shorthand, allowing you to write the following:
+Ranges are provided through C-string shorthand and nameless methods, allowing you to write the following:
 
 ```objective-c
 NSString *a = @"hello there";
-a[2:"..":3];            // "ll"
-a[7:"..":-2];           // "her"
-a[-4:"..":-2]           // "her"
-a[-2:"..":-4]           // nil
-a[12:"..":-1]           // nil
+[a:2:"..":3];            // "ll"
+[a:7:"..":-2];           // "her"
+[a:-4:"..":-2]           // "her"
+[a:-2:"..":-4]           // nil
+[a:12:"..":-1]           // nil
 ```
 
 Regex matching also works, and is provided as the primary means of matching, almost anything that takes a string
@@ -87,8 +88,12 @@ NSString+Ruby requires iOS 5.0+, and is ARC enabled.
 
 Installation
 ---------------------
-Clone the repository, and add the following files to your project:
+Installation can be done using [CocoaPods](http://cocoapods.org):
+add `pod 'NSString-Ruby'` to your `Podfile`, then run `pod install`.
 
+or
+
+Clone the repository, and add the following files to your project:
 ```
 NSString+Ruby.h 
 NSString+Ruby.m
