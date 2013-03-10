@@ -57,8 +57,6 @@ Array/index style accessors are provided through:
 ```objective-c
 NSString *a = @"hello there";
 a[1];                   // "e"
-a[2,3];                 // "llo"
-a[-3, 2]                // "er"
 ```
 
 Ranges are provided through C-string shorthand and nameless methods, allowing you to write the following:
