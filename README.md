@@ -9,9 +9,10 @@ unimplimented (as of yet), and mutating methods (Mutation of strings is not the 
 
 Next Improvements
 ---------------------
-NSMutableString+Ruby
-Full method list implemented
-Even better format/concat options
+NSMutableString+Ruby  
+Full method list implemented  
+Even better format/concat options  
+Clarify when regexes are used vs straight strings  
 
 Differences / Important notes
 ---------------------
