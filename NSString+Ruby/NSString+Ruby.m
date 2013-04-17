@@ -406,7 +406,15 @@
   
   NSArray *matches = [regex matchesInString:self options:0 range:NSMakeRange(offset, self.length-offset)];
   for(NSTextCheckingResult *match in matches) {
-    [results addObject:[self substringWithRange:match.range]];
+      //we want to honor capture groups, the obj-c way is.. -_-,
+      //skip the first match, it's most probably not correct
+      if(match.numberOfRanges > 1){
+          for(int i=1;i<match.numberOfRanges;i++){
+              [results addObject:[self substringWithRange:[match rangeAtIndex:i]]];
+          }
+      }else{
+          [results addObject:[self substringWithRange:match.range]];
+      }
   }
   return results;
 }

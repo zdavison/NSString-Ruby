@@ -43,7 +43,7 @@ describe(@"NSString operator-likes, such as", ^{
  a["lo"]                #=> "lo"
  a["bye"]               #=> nil
  */
-describe(@"NSString []/{} accessors", ^{
+describe(@"NSString []/{} accessors / ranges", ^{
     NSString *a = @"hello there";
     it(@"a[1]                     #=> \"e\"", ^{
       [[a[1] should] equal:@"e"];
