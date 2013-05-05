@@ -139,7 +139,7 @@ documentation.
  #bytes         bytes:
  #bytesize        
  #byteslice
- #capitalize    uppercaseString
+ #capitalize    capitalizedString
  #casecmp       caseInsensitiveCompare:
  #center        center: 
                 center:with:
