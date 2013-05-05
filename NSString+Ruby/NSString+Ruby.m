@@ -25,7 +25,7 @@
  #bytes         bytes:
  #bytesize        
  #byteslice
- #capitalize    uppercaseString
+ #capitalize    capitalizedString
  #casecmp       caseInsensitiveCompare:
  #center        center: 
                 center:with:
@@ -127,6 +127,25 @@
   if([concat isKindOfClass:[NSNumber class]])
     return [NSString stringWithFormat:@"%@%c",self,[concat charValue]];
   return [NSString stringWithFormat:@"%@%@",self,concat];
+}
+
+- (NSString*):(id)concat, ...{
+    
+    NSMutableString *mutable = [NSMutableString stringWithString:self];
+    
+    va_list args;
+    va_start(args, concat);
+    for (id arg = concat; arg != nil; arg = va_arg(args, NSString*))
+    {
+        if([mutable isKindOfClass:NSNumber class]){
+            [mutable appendFormat:@"%c",[arg charValue]];
+        }else{
+            [mutable appendString:arg];
+        }
+    }
+    va_end(args);
+    
+    return mutable;
 }
 
 - (NSString*)x:(int)mult {
@@ -572,11 +591,11 @@
   return [self split:@" "];
 }
 
-- (NSArray*)split:(NSString*)delimiter{
+- (NSArray*)split:(NSString*)pattern{
   return [self split:delimiter limit:INT_MAX];
 }
 
-- (NSArray*)split:(NSString*)delimiter limit:(int)limit{
+- (NSArray*)split:(NSString*)pattern limit:(int)limit{
   NSString *str = self;
   
   //if limit is negative, dont suppress fields and return all fields

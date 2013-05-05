@@ -11,7 +11,8 @@
 
 //Operator-likes
 -(NSString*):(id)concat;
--(NSString*)x:(int)mult;
+-(NSString*):(id)concat, ... NS_REQUIRES_NIL_TERMINATION;
+-(NSString*)x:(int)mult; 
 
 //Shorthand Accessors
 -(NSString*):(int)loc :(int)len;
@@ -65,8 +66,8 @@
 - (BOOL)startsWith:(NSString*)first,...;
 - (NSString*)strip;
 - (NSArray*)split;
-- (NSArray*)split:(NSString*)delimiter;
-- (NSArray*)split:(NSString*)delimiter limit:(int)limit;
+- (NSArray*)split:(NSString*)pattern;
+- (NSArray*)split:(NSString*)pattern limit:(int)limit;
 - (NSString*)squeeze;
 - (NSString*)squeeze:(NSString*)pattern;
 - (NSString*)substituteFirst:(NSString*)pattern with:(NSString*)sub;
