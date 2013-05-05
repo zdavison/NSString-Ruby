@@ -11,8 +11,7 @@
 
 //Operator-likes
 -(NSString*):(id)concat;
--(NSString*):(id)concat, ... NS_REQUIRES_NIL_TERMINATION;
--(NSString*)x:(int)mult; 
+-(NSString*)x:(int)mult;
 
 //Shorthand Accessors
 -(NSString*):(int)loc :(int)len;

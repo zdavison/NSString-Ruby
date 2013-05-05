@@ -129,25 +129,6 @@
   return [NSString stringWithFormat:@"%@%@",self,concat];
 }
 
-- (NSString*):(id)concat, ...{
-    
-    NSMutableString *mutable = [NSMutableString stringWithString:self];
-    
-    va_list args;
-    va_start(args, concat);
-    for (id arg = concat; arg != nil; arg = va_arg(args, NSString*))
-    {
-        if([mutable isKindOfClass:NSNumber class]){
-            [mutable appendFormat:@"%c",[arg charValue]];
-        }else{
-            [mutable appendString:arg];
-        }
-    }
-    va_end(args);
-    
-    return mutable;
-}
-
 - (NSString*)x:(int)mult {
   NSString *result = @"";
   for(int i = 0; i<mult; i++) {
@@ -592,7 +573,7 @@
 }
 
 - (NSArray*)split:(NSString*)pattern{
-  return [self split:delimiter limit:INT_MAX];
+  return [self split:pattern limit:INT_MAX];
 }
 
 - (NSArray*)split:(NSString*)pattern limit:(int)limit{
@@ -604,7 +585,7 @@
 
   NSMutableArray *strings = [NSMutableArray array];
   //if splitting on nothing, just split every character
-  if(delimiter.length == 0){
+  if(pattern.length == 0){
     for(int i=0;i<MIN(limit-1,str.length);i++){
       [strings addObject:[NSString stringWithFormat:@"%c",[str characterAtIndex:i]]];
     }
@@ -614,14 +595,14 @@
   }
   
   NSError *error = nil;
-  NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:delimiter
+  NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                     options:0
                                                                       error:&error];
   if(error)
     return @[];
   
   //remove leading/trailing/continuous whitespace if we're splitting on whitespace
-  if([delimiter isEqualToString:@" "])
+  if([pattern isEqualToString:@" "])
     str = [[self strip] squeeze];
   
   NSArray *matches = [regex matchesInString:str options:0 range:str.range];
