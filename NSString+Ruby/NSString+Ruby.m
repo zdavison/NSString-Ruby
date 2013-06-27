@@ -122,17 +122,41 @@
 #import "NSString+Ruby.h"
 
 @implementation NSString (Ruby)
+
+#pragma mark - Private
+
+NSString* _stringRepresentationOf(id<Concatenatable> object){
+  if([object isKindOfClass:[NSString class]]){
+    return (NSString*)object;
+  }else if([object isKindOfClass:[NSNumber class]]){
+    unichar c = [(NSNumber*)object charValue];
+    return [NSString stringWithCharacters:&c length:1];
+  }else if([object respondsToSelector:@selector(description)]){
+    return [object description];
+  }else{
+    return @"";
+  }
+}
+
+
 #pragma mark - Public Operator-likes
-- (NSString*):(id)concat {
-  if([concat isKindOfClass:[NSNumber class]])
-    return [NSString stringWithFormat:@"%@%c",self,[concat charValue]];
-  return [NSString stringWithFormat:@"%@%@",self,concat];
+
+- (NSString*):(id<Concatenatable>)concat, ... {
+  NSMutableString *newString = [NSMutableString stringWithString:self];
+  va_list args;
+  va_start(args, concat);
+  for (id arg = concat ; arg != nil ; arg = va_arg(args, id<Concatenatable>)){
+    [newString appendString:_stringRepresentationOf(arg)];
+  }
+  va_end(args);
+  
+  return newString;
 }
 
 - (NSString*)x:(int)mult {
-  NSString *result = @"";
+  NSMutableString *result = [NSMutableString string];
   for(int i = 0; i<mult; i++) {
-    result = [result:self];
+    [result appendString:self];
   }
   return result;
 }
@@ -506,7 +530,7 @@
   if(amount <= self.length)
     return self;
   NSString *pad = [@"" stringByPaddingToLength:amount-self.length withString:padString startingAtIndex:0];
-  return [pad:self];
+  return [pad:self,nil];
 }
 
 -(NSArray*)rightPartition:(NSString*)pattern{

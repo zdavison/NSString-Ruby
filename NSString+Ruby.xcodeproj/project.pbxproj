@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1D4F38C177C4DAF001CFD4E /* NSMutableString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */; };
 		B1DB17C416DE6A6F005DF97A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DB17C316DE6A6F005DF97A /* Foundation.framework */; };
 		B1DB17D316DE6A6F005DF97A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DB17D216DE6A6F005DF97A /* SenTestingKit.framework */; };
 		B1DB17D516DE6A6F005DF97A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DB17D416DE6A6F005DF97A /* UIKit.framework */; };
@@ -14,7 +15,6 @@
 		B1DB17D916DE6A6F005DF97A /* libNSStringRuby.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DB17C016DE6A6F005DF97A /* libNSStringRuby.a */; };
 		B1DB17DF16DE6A6F005DF97A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B1DB17DD16DE6A6F005DF97A /* InfoPlist.strings */; };
 		B1DB17ED16DE6AB8005DF97A /* NSString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DB17EC16DE6AB8005DF97A /* NSString+Ruby.m */; };
-		B1DB17EE16DE6AB8005DF97A /* NSString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DB17EC16DE6AB8005DF97A /* NSString+Ruby.m */; };
 		B1DB17F016DE6B5E005DF97A /* NSString+RubySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DB17EF16DE6B5E005DF97A /* NSString+RubySpec.m */; };
 		F8023C1BA30348E5A84EA0CA /* libPods-NSStringRubyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B9EF9EDC4BA4DE2B789CC05 /* libPods-NSStringRubyTests.a */; };
 /* End PBXBuildFile section */
@@ -43,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		5B9EF9EDC4BA4DE2B789CC05 /* libPods-NSStringRubyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NSStringRubyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1D4F38A177C4DAF001CFD4E /* NSMutableString+Ruby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Ruby.h"; sourceTree = "<group>"; };
+		B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Ruby.m"; sourceTree = "<group>"; };
 		B1DB17C016DE6A6F005DF97A /* libNSStringRuby.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNSStringRuby.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DB17C316DE6A6F005DF97A /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B1DB17C716DE6A6F005DF97A /* NSString+Ruby-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+Ruby-Prefix.pch"; sourceTree = "<group>"; };
@@ -117,6 +119,8 @@
 			children = (
 				B1DB17EB16DE6AB8005DF97A /* NSString+Ruby.h */,
 				B1DB17EC16DE6AB8005DF97A /* NSString+Ruby.m */,
+				B1D4F38A177C4DAF001CFD4E /* NSMutableString+Ruby.h */,
+				B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */,
 				B1DB17C616DE6A6F005DF97A /* Supporting Files */,
 			);
 			path = "NSString+Ruby";
@@ -262,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1DB17ED16DE6AB8005DF97A /* NSString+Ruby.m in Sources */,
+				B1D4F38C177C4DAF001CFD4E /* NSMutableString+Ruby.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +274,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1DB17EE16DE6AB8005DF97A /* NSString+Ruby.m in Sources */,
 				B1DB17F016DE6B5E005DF97A /* NSString+RubySpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

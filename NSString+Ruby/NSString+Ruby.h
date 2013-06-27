@@ -7,10 +7,18 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString(Ruby)
+#pragma mark - Categories
+
+@protocol Concatenatable <NSObject>
+@end
+
+@interface NSNumber(Ruby) <Concatenatable>
+@end
+
+@interface NSString(Ruby) <Concatenatable>
 
 //Operator-likes
--(NSString*):(id)concat;
+-(NSString*):(NSObject*)concat, ...;
 -(NSString*)x:(int)mult;
 
 //Shorthand Accessors

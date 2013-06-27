@@ -1,6 +1,22 @@
 #import "Kiwi.h"
 #import "NSString+Ruby.h"
 
+#pragma mark - Support
+
+@interface TestObject : NSObject
+
+@end
+
+@implementation TestObject
+
+-(NSString*)description{
+  return @"TestObjectDescription";
+}
+
+@end
+
+#pragma mark - Tests
+
 SPEC_BEGIN(NSStringRubySpec)
 
 describe(@"NSString operator-likes, such as", ^{
@@ -21,10 +37,17 @@ describe(@"NSString operator-likes, such as", ^{
    */
   context(@": aka(+)", ^{
     it(@"\"hello\" + \"world\"    #=> \"hello world\"", ^{
-      [[[@"hello ":@"world"] should] equal:@"hello world"];
+      [[[@"hello ":@"world",nil] should] equal:@"hello world"];
+    });
+    it(@"\"hello \" + \"world\" + \"!\"    #=> \"hello world\"", ^{
+      [[[@"hello ":@"world",@"!",nil] should] equal:@"hello world!"];
     });
     it(@"\"hello\".concat(33)   #=> \"hello world!\"", ^{
-      [[[@"hello world":[NSNumber numberWithInt:33]] should] equal:@"hello world!"];
+      [[[@"hello world":[NSNumber numberWithInt:33],nil] should] equal:@"hello world!"];
+    });
+    it(@"\"hello\" + TestObject   #=> \"hello world!\"", ^{
+      TestObject *object = [[TestObject alloc] init];
+      [[[@"hello world ":object,nil] should] equal:@"hello world TestObjectDescription"];
     });
   });
 });
@@ -464,8 +487,8 @@ describe(@"NSString match", ^{
   it(@"'hello'.match('(.){1}')          #=> [\"l\"]", ^{
     [[[@"hello" match:@"(.){1}"][0] should] equal:@"h"];
   });
-  it(@"'hello'.match('[aeiou](.){2}')   #=> [\"ell\"]", ^{
-    [[[@"hello" match:@"[aeiou](.){2}"][0] should] equal:@"ell"];
+  it(@"'hello'.match('([aeiou](.){2})')   #=> [\"ell\"]", ^{
+    [[[@"hello" match:@"([aeiou](.){2})"][0] should] equal:@"ell"];
   });
   it(@"'hello'.match('xx')              #=> nil", ^{
     [[[@"hello" match:@"xx"] should] equal:@[]];
