@@ -109,7 +109,7 @@
  #to_r
  #to_s            (just use self)
  #to_str          (just use self)
- #to_sym          (not viable in obj-c, Ruby specific)
+ #to_sym          (not viable in obj-c, Ruby specific, NS____FromString methods might do what you want)
  #tr              (functionality is very similar to gsub for us, suggest using that instead)
  #tr_s
  #unpack
@@ -136,6 +136,15 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   }else{
     return @"";
   }
+}
+
+- (NSString*)_delete:(NSString*)first remaining:(va_list)args{
+  NSSet *comparisonSet = [self unionOfCharactersInStrings:first remaining:args];
+  NSString *finalString = self;
+  for(NSString *charString in comparisonSet) {
+    finalString = [finalString stringByReplacingOccurrencesOfString:charString withString:@""];
+  }
+  return finalString;
 }
 
 
@@ -274,13 +283,9 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 - (NSString*)delete:(NSString*)first, ...{
   va_list args;
   va_start(args, first);
-  NSSet *comparisonSet = [self unionOfCharactersInStrings:first remaining:args];
+  NSString *result = [self _delete:first remaining:args];
   va_end(args);
-  NSString *finalString = self;
-  for(NSString *charString in comparisonSet) {
-    finalString = [finalString stringByReplacingOccurrencesOfString:charString withString:@""];
-  }
-  return finalString;
+  return result;
 }
 
 - (BOOL)endsWith:(NSString*)first,...{
