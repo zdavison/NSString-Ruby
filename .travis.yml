@@ -1,3 +1,3 @@
 language: objective-c
-workspace: NSString+Ruby.xcworkspace
-scheme: NSStringRubyTests
+
+script: xctool -project NSString+Ruby.xcworkspace -scheme "NSStringRuby" build test -sdk iphonesimulator -arch i386

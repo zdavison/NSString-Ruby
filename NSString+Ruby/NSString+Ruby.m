@@ -162,23 +162,23 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return newString;
 }
 
-- (NSString*)x:(int)mult {
+- (NSString*)x:(NSInteger )mult {
   NSMutableString *result = [NSMutableString string];
-  for(int i = 0; i<mult; i++) {
+  for(NSInteger i = 0; i<mult; i++) {
     [result appendString:self];
   }
   return result;
 }
 
 #pragma mark - Public Shorthand Accessors
-- (NSString*):(int)loc :(int)len {
-  return [self substringWithRange:NSMakeRange((loc >= 0) ? loc:self.length - abs(loc),
+- (NSString*):(NSInteger)loc :(NSInteger )len {
+  return [self substringWithRange:NSMakeRange((loc >= 0) ? loc:self.length - labs(loc),
                                               len)];
 }
 
-- (NSString*):(int)start :(char*)shorthand :(int)end {
-  int rstart = (start >= 0) ? start : self.length - abs(start);
-  int rend = (end >= 0) ? end : self.length - abs(end);
+- (NSString*):(NSInteger )start :(char*)shorthand :(NSInteger )end {
+  NSUInteger rstart = (start >= 0) ? start : self.length - labs(start);
+  NSUInteger rend = (end >= 0) ? end : self.length - labs(end);
   if(rstart > rend)
     return nil;
   
@@ -196,23 +196,23 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 - (void)bytes:(void (^)(unichar))block {
   unichar *characters = calloc(self.length, sizeof(unichar));
   [self getCharacters:characters];
-  for(int i = 0; i<self.length; i++) {
+  for(NSInteger i = 0; i<self.length; i++) {
     block(characters[i]);
   }
   free(characters);
 }
 
-- (NSString*)center:(int)amount{
+- (NSString*)center:(NSInteger )amount{
   return [self center:amount with:@" "];
 }
 
-- (NSString*)center:(int)amount with:(NSString*)padString {
+- (NSString*)center:(NSInteger )amount with:(NSString*)padString {
   if (amount <= self.length)
     return self;
-  int padamount = floor((amount - self.length)/2);
+  NSInteger padamount = floor((amount - self.length)/2);
   NSString *pad = @"";
-  int c = 0;
-  for(int i = 0;i<padamount;i++){
+  NSInteger c = 0;
+  for(NSInteger i = 0;i<padamount;i++){
     pad = [NSString stringWithFormat:@"%@%c",pad,[padString characterAtIndex:c++]];
     if(c >= padString.length)
       c = 0;
@@ -224,7 +224,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 - (void)chars:(void (^)(unichar))block {
   unichar *characters = calloc(self.length, sizeof(unichar));
   [self getCharacters:characters];
-  for(int i = 0; i<self.length; i++) {
+  for(NSInteger i = 0; i<self.length; i++) {
     unichar character = [self characterAtIndex:i];
     block(character);
   }
@@ -254,11 +254,11 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self substringWithRange:NSMakeRange(0, (self.length > 0) ? 1:0)];
 }
 
-- (void)codePoints:(void (^)(int))block{
+- (void)codePoints:(void (^)(NSInteger ))block{
   unichar *characters = calloc(self.length, sizeof(unichar));
   [self getCharacters:characters];
-  for(int i = 0; i<self.length; i++) {
-    int codepoint = (int)[self characterAtIndex:i];
+  for(NSInteger i = 0; i<self.length; i++) {
+    NSInteger codepoint = (NSInteger )[self characterAtIndex:i];
     block(codepoint);
   }
   free(characters);
@@ -273,7 +273,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   va_start(args, first);
   NSSet *comparisonSet = [self unionOfCharactersInStrings:first remaining:args];
   va_end(args);
-  int count = 0;
+  NSInteger count = 0;
   for(NSString *charString in comparisonSet) {
     count += [self occurencesOf:charString];
   }
@@ -315,14 +315,14 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self index:pattern offset:0];
 }
 
--(NSInteger)index:(NSString*)pattern offset:(int)offset{
+-(NSInteger)index:(NSString*)pattern offset:(NSInteger )offset{
   NSError *error = nil;
   NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                     options:0
                                                                       error:&error];
   if(!error){
-    int loc = (offset >= 0) ? offset : self.length-abs(offset);
-    int len = self.length - loc;
+    NSUInteger loc = (offset >= 0) ? offset : self.length-labs(offset);
+    NSUInteger len = self.length - loc;
     NSRange range = NSMakeRange(loc,len);
     NSTextCheckingResult *result = [regex firstMatchInString:self options:0 range:range];
     return (result.range.length > 0) ? result.range.location : NSNotFound;
@@ -330,9 +330,9 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return NSNotFound;
 }
 
-- (NSString*)insert:(int)index string:(NSString*)string{
+- (NSString*)insert:(NSInteger)index string:(NSString*)string{
   if(index < 0)
-    index = self.length - abs(index) + 1;
+    index = self.length - labs(index) + 1;
   else if(index >= self.length)
     index = self.length;
   return [NSString stringWithFormat:@"%@%@%@",[self substringToIndex:index],string,[self substringFromIndex:index]];
@@ -344,7 +344,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   NSRange myRange = NSMakeRange(0, [self length]);
   NSArray *toReplace = [NSArray arrayWithObjects:@"\0", @"\a", @"\b", @"\t", @"\n", @"\f", @"\r", @"\e", nil];
   NSArray *replaceWith = [NSArray arrayWithObjects:@"\\0", @"\\a", @"\\b", @"\\t", @"\\n", @"\\f", @"\\r", @"\\e", nil];
-  for (int i = 0, count = [toReplace count]; i < count; ++i) {
+  for (NSInteger i = 0, count = [toReplace count]; i < count; ++i) {
     [result replaceOccurrencesOfString:[toReplace objectAtIndex:i] withString:[replaceWith objectAtIndex:i] options:0 range:myRange];
   }
   return [NSString stringWithFormat:@"\"%@\"",result];
@@ -353,7 +353,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 -(BOOL)isASCII{
   unichar *characters = calloc(self.length, sizeof(unichar));
   [self getCharacters:characters];
-  for(int i = 0; i<self.length; i++) {
+  for(NSInteger i = 0; i<self.length; i++) {
     if(characters[i] < 32 || characters[i] > 127){
       free(characters);
       return NO;
@@ -371,8 +371,8 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self lastIndex:pattern offset:0];
 }
 
--(NSInteger)lastIndex:(NSString*)pattern offset:(int)offset{
-  offset = abs(offset); //lets allow for negative and positive inputs
+-(NSInteger)lastIndex:(NSString*)pattern offset:(NSInteger )offset{
+  offset = labs(offset); //lets allow for negative and positive inputs
   NSError *error = nil;
   NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                     options:0
@@ -384,16 +384,16 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return NSNotFound;
 }
 
--(NSString*)leftJustify:(int)amount{
+-(NSString*)leftJustify:(NSInteger )amount{
   return [self leftJustify:amount with:@" "];
 }
 
--(NSString*)leftJustify:(int)amount with:(NSString*)padString{
+-(NSString*)leftJustify:(NSInteger )amount with:(NSString*)padString{
   if (amount <= self.length)
     return self;
   NSString *pad = @"";
-  int c = 0;
-  for(int i = 0;i<amount-self.length;i++){
+  NSInteger c = 0;
+  for(NSInteger i = 0;i<amount-self.length;i++){
     pad = [NSString stringWithFormat:@"%@%c",pad,[padString characterAtIndex:c++]];
     if(c >= padString.length)
       c = 0;
@@ -403,7 +403,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 }
 
 -(NSString*)leftStrip{
-  int i;
+  NSInteger i;
   for(i=0;i<self.length;i++){
     if(![[NSCharacterSet whitespaceAndNewlineCharacterSet] characterIsMember:[self characterAtIndex:i]])
       break;
@@ -426,7 +426,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self match:pattern offset:0];
 }
 
-- (NSArray*)match:(NSString*)pattern offset:(int)offset{
+- (NSArray*)match:(NSString*)pattern offset:(NSInteger )offset{
   NSMutableArray *results = [NSMutableArray array];
   NSError *error = nil;
   NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
@@ -440,7 +440,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
       //we want to honor capture groups, the obj-c way is.. -_-,
       //skip the first match, it's most probably not correct
       if(match.numberOfRanges > 1){
-          for(int i=1;i<match.numberOfRanges;i++){
+          for(NSInteger i=1;i<match.numberOfRanges;i++){
               [results addObject:[self substringWithRange:[match rangeAtIndex:i]]];
           }
       }else{
@@ -470,8 +470,8 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return result;
 }
 
-- (int)ordinal{
-  return (int)[self characterAtIndex:0];
+- (NSInteger )ordinal{
+  return (NSInteger )[self characterAtIndex:0];
 }
 
 -(NSArray*)partition:(NSString*)pattern{
@@ -504,7 +504,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 - (NSString*)reverse{
   NSMutableString *reversedStr = [NSMutableString stringWithCapacity:self.length];
   
-  for(int i=self.length-1;i>=0;i--)
+  for(NSInteger i=self.length-1;i>=0;i--)
     [reversedStr appendString:[NSString stringWithFormat:@"%c", [self characterAtIndex:i]]];
   
   return reversedStr;
@@ -514,14 +514,14 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self index:pattern offset:0];
 }
 
--(NSInteger)rightIndex:(NSString*)pattern offset:(int)offset{
+-(NSInteger)rightIndex:(NSString*)pattern offset:(NSInteger )offset{
   NSError *error = nil;
   NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:pattern
                                                                     options:0
                                                                       error:&error];
   if(!error){
-    int loc = (offset >= 0) ? offset : self.length-abs(offset);
-    int len = self.length - loc;
+    NSInteger loc = (offset >= 0) ? offset : self.length-labs(offset);
+    NSInteger len = self.length - loc;
     NSRange range = NSMakeRange(0,len);
     NSTextCheckingResult *result = [regex matchesInString:self options:0 range:range].lastObject;
     return (result.range.length > 0) ? result.range.location : NSNotFound;
@@ -529,11 +529,11 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return NSNotFound;
 }
 
--(NSString*)rightJustify:(int)amount{
+-(NSString*)rightJustify:(NSInteger )amount{
   return [self rightJustify:amount with:@" "];
 }
 
--(NSString*)rightJustify:(int)amount with:(NSString*)padString{
+-(NSString*)rightJustify:(NSInteger )amount with:(NSString*)padString{
   if(amount <= self.length)
     return self;
   NSString *pad = [@"" stringByPaddingToLength:amount-self.length withString:padString startingAtIndex:0];
@@ -560,7 +560,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
 }
 
 -(NSString*)rightStrip{
-  int i;
+  NSInteger i;
   for(i=self.length-1;i>0;i--){
     if(![[NSCharacterSet whitespaceAndNewlineCharacterSet] characterIsMember:[self characterAtIndex:i]])
       break;
@@ -607,7 +607,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [self split:pattern limit:INT_MAX];
 }
 
-- (NSArray*)split:(NSString*)pattern limit:(int)limit{
+- (NSArray*)split:(NSString*)pattern limit:(NSInteger )limit{
   NSString *str = self;
   
   //if limit is negative, dont suppress fields and return all fields
@@ -617,7 +617,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   NSMutableArray *strings = [NSMutableArray array];
   //if splitting on nothing, just split every character
   if(pattern.length == 0){
-    for(int i=0;i<MIN(limit-1,str.length);i++){
+    for(NSInteger i=0;i<MIN(limit-1,str.length);i++){
       [strings addObject:[NSString stringWithFormat:@"%c",[str characterAtIndex:i]]];
     }
     if(strings.count < str.length)
@@ -637,7 +637,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
     str = [[self strip] squeeze];
   
   NSArray *matches = [regex matchesInString:str options:0 range:str.range];
-  int loc = 0;
+  NSInteger loc = 0;
   for(NSTextCheckingResult *result in matches){
     NSString *s = [str substringWithRange:NSMakeRange(loc, result.range.location-loc)];
     if(result.range.length > 0 || s.length > 0)
@@ -670,7 +670,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   if(error)
     return nil;
   NSArray *matches = [regex matchesInString:self options:0 range:self.range];
-  int loc = 0;
+  NSInteger loc = 0;
   for(NSTextCheckingResult *result in matches){
     [s appendString:[self substringWithRange:NSMakeRange(loc, result.range.location-loc)]];
     loc = result.range.location + result.range.length;
@@ -731,22 +731,22 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return result;
 }
 
-- (int)sum{
+- (NSInteger )sum{
   return [self sum:16];
 }
 
-- (int)sum:(int)bit{
-  __block int total = 0;
+- (NSInteger )sum:(NSInteger )bit{
+  __block NSInteger total = 0;
   [self chars:^(unichar c) {
-    total += (int)c;
+    total += (NSInteger )c;
   }];
-  return (total % (int)pow(2, bit-1));
+  return (total % (NSInteger )pow(2, bit-1));
 }
 
 - (NSString*)swapCase{
   unichar *s = calloc(self.length, sizeof(unichar));
   [self getCharacters:s];
-  for(int i=0;i<self.length;i++){
+  for(NSInteger i=0;i<self.length;i++){
     if(s[i] >= 64 && s[i] <= 90)
       s[i] = s[i] + 32;
     else if(s[i] >= 97 && s[i] <= 122)
@@ -776,9 +776,9 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
     if(result)
       return [self substringWithRange:result.range];
   } else if([key isKindOfClass:[NSArray class]]) {
-    int loc = [key[0] intValue];
-    int len = [key[1] intValue];
-    return [self substringWithRange:NSMakeRange((loc > 0) ? loc:self.length - abs(loc),
+    NSInteger loc = [key[0] intValue];
+    NSInteger len = [key[1] intValue];
+    return [self substringWithRange:NSMakeRange((loc > 0) ? loc:self.length - labs(loc),
                                                 len)];
   }
   return nil;
@@ -794,13 +794,13 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
     unichar *characters = calloc(cleanedArg.length, sizeof(unichar));
     [cleanedArg getCharacters:characters];
     if(characters[0] == '^') {
-      for(int i = 1; i<cleanedArg.length; i++) {
+      for(NSInteger i = 1; i<cleanedArg.length; i++) {
         [negateSet addObject:[NSString stringWithCharacters:&characters[i] length:1]];
       }
     } else{
-      for(int i = 0; i<cleanedArg.length; i++) {
+      for(NSInteger i = 0; i<cleanedArg.length; i++) {
         if(characters[i] == '-') {
-          for(int j = characters[i-1]; j<characters[i+1]; j++) {
+          for(NSInteger j = characters[i-1]; j<characters[i+1]; j++) {
             unichar c = (unichar)j;
             [argSet addObject:[NSString stringWithCharacters:&c length:1]];
           }

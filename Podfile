@@ -1,5 +1,3 @@
-platform :ios
-
 target :NSStringRubyTests, :exclusive => true do
-    pod 'Kiwi'
+    pod 'Kiwi/XCTest'
 end

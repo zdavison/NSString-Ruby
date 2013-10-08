@@ -1,4 +1,4 @@
-#import "Kiwi.h"
+#import <Kiwi/Kiwi.h>
 #import "NSString+Ruby.h"
 
 #pragma mark - Support
@@ -67,37 +67,37 @@ describe(@"NSString operator-likes, such as", ^{
  a["bye"]               #=> nil
  */
 describe(@"NSString []/{} accessors / ranges", ^{
-    NSString *a = @"hello there";
-    it(@"a[1]                     #=> \"e\"", ^{
-      [[a[1] should] equal:@"e"];
-    });
-    it(@"a[2, 3]                  #=> \"llo\"", ^{
-      [[[a:2:3] should] equal:@"llo"];
-    });
-    it(@"a[2..3]                  #=> \"ll\"", ^{
-      [[[a:2:"..":3] should] equal:@"ll"];
-    });
-    it(@"a[-3, 2]                 #=> \"er\"", ^{
-      [[[a:-3:2] should] equal:@"er"];
-    });
-    it(@"a[7..-2]                 #=> \"her\"", ^{
-      [[[a:7:"..":-2] should] equal:@"her"];
-    });
-    it(@"a[-2..-4]                #=> nil", ^{
-      [[a:-2:"..":-4] shouldBeNil];
-    });
-    it(@"a[12..-1]                #=> nil", ^{
-      [[a:12:"..":-1] shouldBeNil];
-    });
-    it(@"a[%r[aeiou](.){2}]       #=> \"ell\"", ^{
-      [[a[@"[aeiou](.){2}"] should] equal:@"ell"];
-    });
-    it(@"a[\"lo\"]                #=> \"lo\"", ^{
-      [[a[@"lo"] should] equal:@"lo"];
-    });
-    it(@"a[\"bye\"]               #=> nil", ^{
-      [a[@"bye"] shouldBeNil];
-    });
+  NSString *a = @"hello there";
+  it(@"a[1]                     #=> \"e\"", ^{
+    [[a[1] should] equal:@"e"];
+  });
+  it(@"a[2, 3]                  #=> \"llo\"", ^{
+    [[[a:2:3] should] equal:@"llo"];
+  });
+  it(@"a[2..3]                  #=> \"ll\"", ^{
+    [[[a:2:"..":3] should] equal:@"ll"];
+  });
+  it(@"a[-3, 2]                 #=> \"er\"", ^{
+    [[[a:-3:2] should] equal:@"er"];
+  });
+  it(@"a[7..-2]                 #=> \"her\"", ^{
+    [[[a:7:"..":-2] should] equal:@"her"];
+  });
+  it(@"a[-2..-4]                #=> nil", ^{
+    [[a:-2:"..":-4] shouldBeNil];
+  });
+  it(@"a[12..-1]                #=> nil", ^{
+    [[a:12:"..":-1] shouldBeNil];
+  });
+  it(@"a[%r[aeiou](.){2}]       #=> \"ell\"", ^{
+    [[a[@"[aeiou](.){2}"] should] equal:@"ell"];
+  });
+  it(@"a[\"lo\"]                #=> \"lo\"", ^{
+    [[a[@"lo"] should] equal:@"lo"];
+  });
+  it(@"a[\"bye\"]               #=> nil", ^{
+    [a[@"bye"] shouldBeNil];
+  });
 });
 
 //Methods
@@ -111,7 +111,7 @@ describe(@"NSString bytes", ^{
     [[theValue(bytes.count) should] equal:theValue(@"hello world".length)];
     unichar *characters = calloc(@"hello world".length, sizeof(unichar));
     [@"hello world" getCharacters:characters];
-    for(int i=0;i<@"hello world".length;i++){
+    for(NSInteger i=0;i<@"hello world".length;i++){
       unichar character = [[bytes objectAtIndex:i] charValue];
       [[theValue(character) should] equal:theValue(characters[i])];
     }
@@ -144,7 +144,7 @@ describe(@"NSString chars", ^{
     [[theValue(chars.count) should] equal:theValue(@"hello world".length)];
     unichar *characters = calloc(@"hello world".length, sizeof(unichar));
     [@"hello world" getCharacters:characters];
-    for(int i=0;i<@"hello world".length;i++){
+    for(NSInteger i=0;i<@"hello world".length;i++){
       unichar character = [[chars objectAtIndex:i] charValue];
       [[theValue(character) should] equal:theValue(characters[i])];
     }
@@ -222,13 +222,13 @@ describe(@"NSString chr", ^{
 describe(@"NSString codepoints", ^{
   it(@"should execute a block for each char", ^{
     NSMutableArray *chars = [NSMutableArray array];
-    [@"hello world" codePoints:^(int i) {
-      [chars addObject:[NSNumber numberWithInt:i]];
+    [@"hello world" codePoints:^(NSInteger i) {
+      [chars addObject:[NSNumber numberWithLong:i]];
     }];
     [[theValue(chars.count) should] equal:theValue(@"hello world".length)];
     unichar *characters = calloc(@"hello world".length, sizeof(unichar));
     [@"hello world" getCharacters:characters];
-    for(int i=0;i<@"hello world".length;i++){
+    for(NSInteger i=0;i<@"hello world".length;i++){
       unichar character = [[chars objectAtIndex:i] charValue];
       [[theValue(character) should] equal:theValue(characters[i])];
     }
@@ -246,19 +246,19 @@ describe(@"NSString codepoints", ^{
 describe(@"NSString count", ^{
   NSString *a = @"hello world";
   it(@"a.count(\"lo\")            #=> 5", ^{
-    int count = [a count:@"lo",nil];
+    NSInteger count = [a count:@"lo",nil];
     [[theValue(count) should] equal:theValue(5)];
   });
   it(@"a.count(\"lo,\"o\"\")      #=> 2", ^{
-    int count = [a count:@"lo",@"o",nil];
+    NSInteger count = [a count:@"lo",@"o",nil];
     [[theValue(count) should] equal:theValue(2)];
   });
   it(@"a.count(\"hello\",\"^l\")  #=> 4", ^{
-    int count = [a count:@"hello",@"^l",nil];
+    NSInteger count = [a count:@"hello",@"^l",nil];
     [[theValue(count) should] equal:theValue(4)];
   });
   it(@"a.count(\"ej-m\")          #=> 4", ^{
-    int count = [a count:@"ej-m",nil];
+    NSInteger count = [a count:@"ej-m",nil];
     [[theValue(count) should] equal:theValue(4)];
   });
 });
@@ -292,7 +292,7 @@ describe(@"NSString delete", ^{
 describe(@"NSString endsWith", ^{
   it(@"should return true if the string ends with any of the provided strings.", ^{
     BOOL result = [@"hello world" endsWith:@"hello",@"wrold",@"orld",nil];
-    [[theValue(result) should] equal:theValue(true)];
+    [[theValue(result) should] equal:theValue(YES)];
   });
 });
 
@@ -324,13 +324,13 @@ describe(@"NSString hex", ^{
  */
 describe(@"NSString include", ^{
   it(@"'hello'.include? 'lo'   #=> true", ^{
-    [[theValue([@"hello" includes:@"lo"]) should] equal:theValue(true)];
+    [[theValue([@"hello" includes:@"lo"]) should] equal:theValue(YES)];
   });
   it(@"'hello'.include? 'ol'   #=> false", ^{
-    [[theValue([@"hello" includes:@"ol"]) should] equal:theValue(false)];
+    [[theValue([@"hello" includes:@"ol"]) should] equal:theValue(NO)];
   });
   it(@"'hello'.include? 'h'   #=> true", ^{
-    [[theValue([@"hello" includes:@"h"]) should] equal:theValue(true)];
+    [[theValue([@"hello" includes:@"h"]) should] equal:theValue(YES)];
   });
 });
 
@@ -546,7 +546,7 @@ describe(@"NSString partition", ^{
 });
 
 /*
- "world".prepend(“hello ”) #=> “hello world” 
+ "world".prepend(“hello ”) #=> “hello world”
  */
 describe(@"NSString prepend", ^{
   it(@"\"world\".prepend(“hello ”) #=> \"hello world\"", ^{
