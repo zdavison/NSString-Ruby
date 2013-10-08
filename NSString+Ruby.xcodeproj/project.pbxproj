@@ -191,7 +191,7 @@
 		B1DB17B716DE6A6F005DF97A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = ZD;
 			};
 			buildConfigurationList = B1DB17BA16DE6A6F005DF97A /* Build configuration list for PBXProject "NSString+Ruby" */;
@@ -294,7 +294,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E5FA76D7C8CC44E2B5F8F775 /* Pods-NSStringRubyTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -321,6 +320,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -329,7 +329,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E5FA76D7C8CC44E2B5F8F775 /* Pods-NSStringRubyTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -352,6 +351,7 @@
 				INFOPLIST_FILE = "NSStringRubyTests/NSStringRubyTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -378,6 +378,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -405,7 +406,6 @@
 		B1DB17E616DE6A6F005DF97A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/NSString_Ruby.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,7 +426,6 @@
 		B1DB17E716DE6A6F005DF97A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				DSTROOT = /tmp/NSString_Ruby.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
