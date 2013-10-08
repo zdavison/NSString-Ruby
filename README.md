@@ -1,4 +1,4 @@
-NSString+Ruby
+NSString+Ruby [![Build Status](https://travis-ci.org/zdavison/NSString-Ruby.png?branch=master)](https://travis-ci.org/zdavison/NSString-Ruby)
 ====================
 
 Intro
