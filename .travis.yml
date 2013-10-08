@@ -1,3 +1,3 @@
 language: objective-c
 workspace: NSString+Ruby.xcworkspace
-scheme: NSStringRuby
+scheme: NSStringRubyTests
