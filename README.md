@@ -12,7 +12,7 @@ Next Improvements
 NSMutableString+Ruby  
 Full method list implemented  
 Even better format/concat options  
-Clarify when regexes are used vs straight strings  
+Ruby style block execution
 
 Differences / Important notes
 ---------------------
@@ -139,7 +139,7 @@ documentation.
  #bytes         bytes:
  #bytesize        
  #byteslice
- #capitalize    uppercaseString
+ #capitalize    capitalizedString
  #casecmp       caseInsensitiveCompare:
  #center        center: 
                 center:with:

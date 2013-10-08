@@ -354,8 +354,10 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   unichar *characters = calloc(self.length, sizeof(unichar));
   [self getCharacters:characters];
   for(int i = 0; i<self.length; i++) {
-    if(characters[i] < 32 || characters[i] > 127)
+    if(characters[i] < 32 || characters[i] > 127){
+      free(characters);
       return NO;
+    }
   }
   free(characters);
   return YES;
