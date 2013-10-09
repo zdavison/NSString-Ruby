@@ -31,7 +31,7 @@ the equivalent of the concatenation operator (+), would be (:) in NSString+Ruby,
 ```
 
 ```objective-c
-[@"hello ":@"world"];   //"hello world"
+[@"hello ":@"world",nil];   //"hello world"
 ```
 
 This is still a little ugly, but is the least amount of code you'd need to write in obj-c to do concatenation now.
