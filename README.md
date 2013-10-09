@@ -96,7 +96,7 @@ NSString+Ruby requires iOS 5.0+, and is ARC enabled.
 Installation
 ---------------------
 Installation can be done using [CocoaPods](http://cocoapods.org):
-add `pod 'NSString-Ruby'` to your `Podfile`, then run `pod install`.
+add `pod 'NSString+Ruby'` to your `Podfile`, then run `pod install`.
 
 or
 
