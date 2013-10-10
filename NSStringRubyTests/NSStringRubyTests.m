@@ -4,7 +4,6 @@
 #pragma mark - Support
 
 @interface TestObject : NSObject
-
 @end
 
 @implementation TestObject
@@ -813,10 +812,10 @@ describe(@"NSString sum", ^{
  */
 describe(@"NSString swapCase", ^{
   it(@"\"Hello\".swapcase                #=> \"hELLO\"", ^{
-    [[[@"Hello" swapCase] should] equal:@"hELLO"];
+    [[[@"Hello" swapcase] should] equal:@"hELLO"];
   });
   it(@"\"cYbEr_PuNk11\".swapcase         #=> \"CyBeR_pUnK11\"", ^{
-    [[[@"cYbEr_PuNk11" swapCase] should] equal:@"CyBeR_pUnK11"];
+    [[[@"cYbEr_PuNk11" swapcase] should] equal:@"CyBeR_pUnK11"];
   });
 });
 

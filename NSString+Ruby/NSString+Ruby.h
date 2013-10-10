@@ -83,7 +83,7 @@
 -(NSString*)substituteAll:(NSString*)pattern with:(NSString*)sub;
 -(NSInteger )sum;
 -(NSInteger )sum:(NSInteger )bit;
--(NSString*)swapCase;
+-(NSString*)swapcase;
 
 //Subscript Protocol
 -(id)objectAtIndexedSubscript:(NSUInteger)index;

@@ -8,24 +8,24 @@
 
 /* Ruby -> Obj-C Equivalents
  
- #capitalize!   capitalizedStringM
- #chomp!        chompM
-                chompM:
- #chop          chopM
- #delete        deleteM:
- #downcase      lowercaseStringM
- #gsub          substituteAllM:
-                substituteAllM:pattern
- #lstrip        leftStripM
- #reverse       reverseM
- #rstrip        rightStripM
- #squeeze       squeezeM
-                squeezeM:
- #strip         stripM
- #sub           substituteFirstM:
-                substituteLastM:
- #swapcase      swapCaseM
- #upcase        uppercaseStringM
+ #capitalize!     capitalizedStringInPlace
+ #chomp!          chompInPlace
+                  chompInPlace:
+ #chop!           chopInPlace
+ #delete!         deleteInPlace:
+ #downcase!       lowercaseStringInPlace
+ #gsub!           substituteAllInPlace:
+                  substituteAllInPlace:pattern
+ #lstrip!         leftStripInPlace
+ #reverse!        reverseInPlace
+ #rstrip!         rightStripInPlace
+ #squeeze!        squeezeInPlace
+                  squeezeInPlace:
+ #strip!          stripInPlace
+ #sub!            substituteFirstInPlace:
+                  substituteLastInPlace:
+ #swapcase!       swapcaseInPlace
+ #upcase!         uppercaseStringInPlace
  
  */
 
@@ -40,7 +40,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
 
 @implementation NSMutableString (Ruby)
 
--(NSString*)capitalizedStringM{
+-(NSString*)capitalizeInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self capitalizedString]];
   if([oldString isEqualToString:self]){
@@ -50,7 +50,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)chompM{
+-(NSString*)chompInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self chomp]];
   if([oldString isEqualToString:self]){
@@ -60,7 +60,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)chompM:(NSString*)string{
+-(NSString*)chompInPlace:(NSString*)string{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self chomp:string]];
   if([oldString isEqualToString:self]){
@@ -70,12 +70,12 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)chopM{
+-(NSString*)chopInPlace{
   [self setString:[self chop]];
   return self;
 }
 
--(NSString*)deleteM:(NSString*)first, ...{
+-(NSString*)deleteInPlace:(NSString*)first, ...{
   NSString *oldString = [NSString stringWithString:self];
   va_list args;
   va_start(args, first);
@@ -88,7 +88,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)lowercaseStringM{
+-(NSString*)lowercaseInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self lowercaseString]];
   if([oldString isEqualToString:self]){
@@ -98,7 +98,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)substituteAllM:(NSDictionary *)subDictionary{
+-(NSString*)substituteAllInPlace:(NSDictionary *)subDictionary{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self substituteAll:subDictionary]];
   if([oldString isEqualToString:self]){
@@ -108,7 +108,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)substituteAllM:(NSString *)pattern with:(NSString *)sub{
+-(NSString*)substituteAllInPlace:(NSString *)pattern with:(NSString *)sub{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self substituteAll:pattern with:sub]];
   if([oldString isEqualToString:self]){
@@ -118,7 +118,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)leftStripM{
+-(NSString*)leftStripInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self leftStrip]];
   if([oldString isEqualToString:self]){
@@ -128,7 +128,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)reverseM{
+-(NSString*)reverseInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self reverse]];
   if([oldString isEqualToString:self]){
@@ -138,7 +138,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)rightStripM{
+-(NSString*)rightStripInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self rightStrip]];
   if([oldString isEqualToString:self]){
@@ -148,7 +148,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)squeezeM{
+-(NSString*)squeezeInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self squeeze]];
   if([oldString isEqualToString:self]){
@@ -158,7 +158,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)squeezeM:(NSString *)pattern{
+-(NSString*)squeezeInPlace:(NSString *)pattern{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self squeeze:pattern]];
   if([oldString isEqualToString:self]){
@@ -168,7 +168,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)stripM{
+-(NSString*)stripInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self strip]];
   if([oldString isEqualToString:self]){
@@ -178,7 +178,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)substituteFirstM:(NSString *)pattern with:(NSString *)sub{
+-(NSString*)substituteFirstInPlace:(NSString *)pattern with:(NSString *)sub{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self substituteFirst:pattern with:sub]];
   if([oldString isEqualToString:self]){
@@ -188,7 +188,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)substituteLastM:(NSString *)pattern with:(NSString *)sub{
+-(NSString*)substituteLastInPlace:(NSString *)pattern with:(NSString *)sub{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self substituteLast:pattern with:sub]];
   if([oldString isEqualToString:self]){
@@ -198,9 +198,9 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)swapCaseM{
+-(NSString*)swapcaseInPlace{
   NSString *oldString = [NSString stringWithString:self];
-  [self setString:[self swapCase]];
+  [self setString:[self swapcase]];
   if([oldString isEqualToString:self]){
     return nil;
   }else{
@@ -208,7 +208,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object);
   }
 }
 
--(NSString*)upperCaseStringM{
+-(NSString*)uppercaseInPlace{
   NSString *oldString = [NSString stringWithString:self];
   [self setString:[self uppercaseString]];
   if([oldString isEqualToString:self]){

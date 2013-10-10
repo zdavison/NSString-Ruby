@@ -12,20 +12,23 @@
 @interface NSMutableString (Ruby)
 
 //Ruby Methods
--(NSString*)chompM;
--(NSString*)deleteM:(NSString*)first, ...;
--(NSString*)lowercaseStringM;
--(NSString*)substituteAllM:(NSDictionary *)subDictionary;
--(NSString*)substituteAllM:(NSString *)pattern with:(NSString *)sub;
--(NSString*)leftStripM;
--(NSString*)reverseM;
--(NSString*)rightStripM;
--(NSString*)squeezeM;
--(NSString*)squeezeM:(NSString *)pattern;
--(NSString*)stripM;
--(NSString*)substituteFirstM:(NSString *)pattern with:(NSString *)sub;
--(NSString*)substituteLastM:(NSString *)pattern with:(NSString *)sub;
--(NSString*)swapCaseM;
--(NSString*)upperCaseStringM;
+-(NSString*)capitalizeInPlace;
+-(NSString*)chompInPlace;
+-(NSString*)chompInPlace:(NSString*)string;
+-(NSString*)chopInPlace;
+-(NSString*)deleteInPlace:(NSString*)first, ...;
+-(NSString*)lowercaseInPlace;
+-(NSString*)substituteAllInPlace:(NSDictionary *)subDictionary;
+-(NSString*)substituteAllInPlace:(NSString *)pattern with:(NSString *)sub;
+-(NSString*)leftStripInPlace;
+-(NSString*)reverseInPlace;
+-(NSString*)rightStripInPlace;
+-(NSString*)squeezeInPlace;
+-(NSString*)squeezeInPlace:(NSString *)pattern;
+-(NSString*)stripInPlace;
+-(NSString*)substituteFirstInPlace:(NSString *)pattern with:(NSString *)sub;
+-(NSString*)substituteLastInPlace:(NSString *)pattern with:(NSString *)sub;
+-(NSString*)swapcaseInPlace;
+-(NSString*)uppercaseInPlace;
 
 @end
