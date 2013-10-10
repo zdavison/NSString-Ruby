@@ -107,8 +107,12 @@ NSMutableString
 NSMutableString has mutating versions of all the usual destructive methods. The modifier `InPlace` 
 is used to signify a mutating/destructive method, vs the Ruby `!` bang modifier.
 
-Method List
----------------------
+
+
+
+
+# Method List
+
 Here is a full equivalence list of methods provided (Notes are provided in brackets for when things are purposefully
 not implemented, blank lines will be implemented in future versions).
 
