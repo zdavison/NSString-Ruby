@@ -14,6 +14,7 @@
 		873D11001804A51800BCAC49 /* NSStringRubyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 873D10FF1804A51800BCAC49 /* NSStringRubyTests.m */; };
 		87600EA31804A63B0095E6CC /* NSString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DB17EC16DE6AB8005DF97A /* NSString+Ruby.m */; };
 		87600EA41804A63B0095E6CC /* NSMutableString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */; };
+		879051241806E8840016DA9E /* NSMutableStringRubyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 879051231806E8840016DA9E /* NSMutableStringRubyTests.m */; };
 		B1D4F38C177C4DAF001CFD4E /* NSMutableString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */; };
 		B1DB17C416DE6A6F005DF97A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1DB17C316DE6A6F005DF97A /* Foundation.framework */; };
 		B1DB17ED16DE6AB8005DF97A /* NSString+Ruby.m in Sources */ = {isa = PBXBuildFile; fileRef = B1DB17EC16DE6AB8005DF97A /* NSString+Ruby.m */; };
@@ -40,6 +41,7 @@
 		873D10FD1804A51800BCAC49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		873D10FF1804A51800BCAC49 /* NSStringRubyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStringRubyTests.m; sourceTree = "<group>"; };
 		873D11011804A51800BCAC49 /* NSStringRubyTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSStringRubyTests-Prefix.pch"; sourceTree = "<group>"; };
+		879051231806E8840016DA9E /* NSMutableStringRubyTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableStringRubyTests.m; sourceTree = "<group>"; };
 		B1D4F38A177C4DAF001CFD4E /* NSMutableString+Ruby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+Ruby.h"; sourceTree = "<group>"; };
 		B1D4F38B177C4DAF001CFD4E /* NSMutableString+Ruby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+Ruby.m"; sourceTree = "<group>"; };
 		B1DB17C016DE6A6F005DF97A /* libNSStringRuby.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libNSStringRuby.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				873D10FF1804A51800BCAC49 /* NSStringRubyTests.m */,
+				879051231806E8840016DA9E /* NSMutableStringRubyTests.m */,
 				873D10FA1804A51800BCAC49 /* Supporting Files */,
 			);
 			path = NSStringRubyTests;
@@ -261,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				879051241806E8840016DA9E /* NSMutableStringRubyTests.m in Sources */,
 				87600EA31804A63B0095E6CC /* NSString+Ruby.m in Sources */,
 				87600EA41804A63B0095E6CC /* NSMutableString+Ruby.m in Sources */,
 				873D11001804A51800BCAC49 /* NSStringRubyTests.m in Sources */,

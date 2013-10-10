@@ -102,7 +102,7 @@
  #succ
  #sum           sum
                 sum:
- #swapcase      swapCase
+ #swapcase      swapcase
  #to_c
  #to_f          floatValue
  #to_i          intValue
@@ -743,7 +743,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return (total % (NSInteger )pow(2, bit-1));
 }
 
-- (NSString*)swapCase{
+- (NSString*)swapcase{
   unichar *s = calloc(self.length, sizeof(unichar));
   [self getCharacters:s];
   for(NSInteger i=0;i<self.length;i++){
