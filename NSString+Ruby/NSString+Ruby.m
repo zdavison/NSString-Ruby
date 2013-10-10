@@ -338,15 +338,24 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   return [NSString stringWithFormat:@"%@%@%@",[self substringToIndex:index],string,[self substringFromIndex:index]];
 }
 
-//TODO: performance on this is probably garbage, honestly
-- (NSString*)inspect{
-  NSMutableString *result = [NSMutableString stringWithString:self];
-  NSRange myRange = NSMakeRange(0, [self length]);
-  NSArray *toReplace = [NSArray arrayWithObjects:@"\0", @"\a", @"\b", @"\t", @"\n", @"\f", @"\r", @"\e", nil];
-  NSArray *replaceWith = [NSArray arrayWithObjects:@"\\0", @"\\a", @"\\b", @"\\t", @"\\n", @"\\f", @"\\r", @"\\e", nil];
-  for (NSInteger i = 0, count = [toReplace count]; i < count; ++i) {
-    [result replaceOccurrencesOfString:[toReplace objectAtIndex:i] withString:[replaceWith objectAtIndex:i] options:0 range:myRange];
-  }
+- (NSString *)inspect;
+{
+  NSMutableString *result = [self mutableCopy];
+  NSRange stringRange = NSMakeRange(0, [self length]);
+  
+  [@{
+     @"\0" : @"\\0",
+     @"\a" : @"\\a",
+     @"\b" : @"\\b",
+     @"\t" : @"\\t",
+     @"\n" : @"\\n",
+     @"\f" : @"\\f",
+     @"\r" : @"\\r",
+     @"\e" : @"\\e",
+     } enumerateKeysAndObjectsUsingBlock:^(NSString *string, NSString *replacement, BOOL *stop) {
+       [result replaceOccurrencesOfString:string withString:replacement options:0 range:stringRange];
+     }];
+  
   return [NSString stringWithFormat:@"\"%@\"",result];
 }
 
