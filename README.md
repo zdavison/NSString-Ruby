@@ -9,8 +9,6 @@ unimplimented (as of yet), and mutating methods (Mutation of strings is not the 
 
 Next Improvements
 ---------------------
-NSMutableString+Ruby  
-Full method list implemented  
 Even better format/concat options  
 Ruby style block execution
 
@@ -98,14 +96,6 @@ Installation
 Installation can be done using [CocoaPods](http://cocoapods.org):
 add `pod 'NSString+Ruby'` to your `Podfile`, then run `pod install`.
 
-or
-
-Clone the repository, and add the following files to your project:
-```
-NSString+Ruby.h 
-NSString+Ruby.m
-```
-
 Tests
 ---------------------
 Tests are provided through Kiwi ( https://github.com/allending/Kiwi ), and are largely reproduced from the Ruby String
@@ -120,6 +110,12 @@ not implemented, blank lines will be implemented in future versions).
 Please consult the Ruby String Reference page ( http://www.ruby-doc.org/core-1.9.3/String.html ) for method behaviour
 documentation.
 
+NSMutableString
+---------------------
+NSMutableString has mutating versions of all the usual destructive methods. The modifier `InPlace` 
+is used to signify a mutating/destructive method, vs the Ruby `!` bang modifier.
+
+#NSString
 ```
  ::try_convert
  #%               (no sensible way to implement this)
@@ -216,7 +212,7 @@ documentation.
  #succ
  #sum           sum
                 sum:
- #swapcase      swapCase
+ #swapcase      swapcase
  #to_c
  #to_f          floatValue
  #to_i          intValue
@@ -231,4 +227,28 @@ documentation.
  #upto
  #valid_encoding?
  
+```
+
+# NSMutableString
+```
+
+ #capitalize!     capitalizedStringInPlace
+ #chomp!          chompInPlace
+                  chompInPlace:
+ #chop!           chopInPlace
+ #delete!         deleteInPlace:
+ #downcase!       lowercaseStringInPlace
+ #gsub!           substituteAllInPlace:
+                  substituteAllInPlace:pattern
+ #lstrip!         leftStripInPlace
+ #reverse!        reverseInPlace
+ #rstrip!         rightStripInPlace
+ #squeeze!        squeezeInPlace
+                  squeezeInPlace:
+ #strip!          stripInPlace
+ #sub!            substituteFirstInPlace:
+                  substituteLastInPlace:
+ #swapcase!       swapcaseInPlace
+ #upcase!         uppercaseStringInPlace
+
 ```
