@@ -4,8 +4,8 @@ NSString+Ruby [![Build Status](https://travis-ci.org/zdavison/NSString-Ruby.png?
 Intro
 ---------------------
 NSString+Ruby is an attempt to improve NSString by porting Ruby String methods onto a category on NSString. 
-This means you can use the majority of Ruby String methods in obj-c, with the exception of a few unnecessary, 
-unimplimented (as of yet), and mutating methods (Mutation of strings is not the objective-c 'way', so we don't do it here).
+This means you can use the majority of Ruby String methods in obj-c, with the exception of a few unnecessary, and
+unimplimented (as of yet).
 
 Next Improvements
 ---------------------
