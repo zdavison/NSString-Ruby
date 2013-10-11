@@ -8,7 +8,7 @@
 
 /* Ruby -> Obj-C Equivalents
  
- #capitalize!     capitalizedStringInPlace
+ #capitalize!     capitalizeInPlace
  #chomp!          chompInPlace
                   chompInPlace:
  #chop!           chopInPlace
@@ -25,7 +25,7 @@
  #sub!            substituteFirstInPlace:
                   substituteLastInPlace:
  #swapcase!       swapcaseInPlace
- #upcase!         uppercaseStringInPlace
+ #upcase!         uppercaseInPlace
  
  */
 
