@@ -236,7 +236,7 @@ documentation.
 ## NSMutableString
 ```
 
- #capitalize!     capitalizedStringInPlace
+ #capitalize!     capitalizeInPlace
  #chomp!          chompInPlace
                   chompInPlace:
  #chop!           chopInPlace
@@ -253,6 +253,6 @@ documentation.
  #sub!            substituteFirstInPlace:
                   substituteLastInPlace:
  #swapcase!       swapcaseInPlace
- #upcase!         uppercaseStringInPlace
+ #upcase!         uppercaseInPlace
 
 ```
