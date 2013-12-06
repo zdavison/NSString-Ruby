@@ -1,3 +1,8 @@
 language: objective-c
-
-script: xctool -project NSString+Ruby.xcworkspace -scheme "NSStringRuby" build test -sdk iphonesimulator -arch i386
+before_install:
+    - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+    - brew update
+    - brew uninstall xctool
+    - brew install xctool --HEAD
+    - pod install
+script: xctool -workspace NSString+Ruby.xcworkspace -scheme "NSStringRubyTests" test -sdk iphonesimulator -arch i386
