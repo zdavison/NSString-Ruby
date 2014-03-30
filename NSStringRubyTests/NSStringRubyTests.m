@@ -711,6 +711,13 @@ describe(@"NSString split", ^{
   });
 });
 
+describe(@"NSString split (additional)", ^{
+  it(@"\"gesges 7774b14 abcdef\".split(' ')      #=> [\"gesges\", \"7774b14\", \"abcdef\"]", ^{
+    NSArray *result = [@"gesges 7774b14 abcdef" split:@" "];
+    [[result should] equal:@[@"gesges",@"7774b14",@"abcdef"]];
+  });
+});
+
 /*
  "yellow moon".squeeze                    #=> "yelow mon"
  "  now   is  the".squeeze(" ")           #=> " now is the"

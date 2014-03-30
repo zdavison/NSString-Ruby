@@ -643,7 +643,7 @@ NSString* _stringRepresentationOf(id<Concatenatable> object){
   
   //remove leading/trailing/continuous whitespace if we're splitting on whitespace
   if([pattern isEqualToString:@" "])
-    str = [[self strip] squeeze];
+    str = [[self strip] squeeze:@" "];
   
   NSArray *matches = [regex matchesInString:str options:0 range:str.range];
   NSInteger loc = 0;
